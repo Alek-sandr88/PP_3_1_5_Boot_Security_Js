@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div th:align="center" th:switch="${users}">
+    <h3 th:case="null"> Users not found</h3>
+    <div th:case="*">
+        <h2>Users table</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>User Name</th>
+                <th>LastName</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>User Roles</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}">id</td>
+                <td th:text="${user.username}">username</td>
+                <td th:text="${user.lastName}">lastName</td>
+                <td th:text="${user.password}">password</td>
+                <td th:text="${user.email}">email</td>
+                <td th:each="role : ${user.roles}">
+                    <span th:text="${role.name}"> </span></td>
+                <td><a class="button24" th:href="@{admin/update/{id} (id = ${user.id})}">Edit</a></td>
+                <td><a class="button24" th:href="@{admin/delete/{id} (id = ${user.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a class="button7" href="admin/create">Create User</a></p>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+</body>
+</html>

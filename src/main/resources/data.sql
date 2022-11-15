@@ -1,0 +1,18 @@
+-- -- users
+-- INSERT INTO users(username, lastname, password, email)
+-- VALUES ('Ivan', 'Ivanov', '$2a$12$IHrUwA7Ura87BwQyYp7vwOK5ZJCPZMn8NN2uHDasH5cPXeXQyjCgC', 'ivan@van');
+--
+-- INSERT INTO users(username, lastname, password, email)
+-- VALUES ('Olga', 'Ivanova', '$2a$12$IHrUwA7Ura87BwQyYp7vwOK5ZJCPZMn8NN2uHDasH5cPXeXQyjCgC', 'ol@ga');
+--
+-- -- roles
+-- INSERT INTO roles(name)
+-- VALUES ('ROLE_ADMIN');
+-- INSERT INTO roles(name)
+-- VALUES ('ROLE_USER');
+--
+-- -- user_roles
+-- INSERT INTO user_roles(user_id, role_id)
+-- VALUES (1, 1);
+-- INSERT INTO user_roles(user_id, role_id)
+-- VALUES (2, 2);
