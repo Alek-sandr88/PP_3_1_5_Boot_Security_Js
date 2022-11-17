@@ -44,6 +44,12 @@ public class UserServiseImpl implements UserServise {
     }
 
     @Override
+    @Transactional
+    public void updateUser(User updatedUser) {
+        userDao.updateUser(updatedUser);
+    }
+
+    @Override
     public List<Role> listRoles() {
         return userDao.listRoles();
     }

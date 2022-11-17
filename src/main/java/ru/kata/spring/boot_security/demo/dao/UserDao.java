@@ -13,6 +13,8 @@ public interface UserDao {
     void saveUser(User user);
 
     void removeUserById(Long id);
+    void updateUser(User updatedUser);
+
 
     public List<Role> listRoles();
 
