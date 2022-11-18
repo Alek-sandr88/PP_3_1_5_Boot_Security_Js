@@ -37,38 +37,38 @@ public class AdminController {
         model.addAttribute("user", userServise.getUserById(id));
         return "admin";
     }
-
-    @GetMapping("/create")
-    public String newUserForm(Model model, @ModelAttribute("user") User user) {
-        List<Role> listRoles = userServise.listRoles();
-        model.addAttribute("listRoles", listRoles);
-        return "create";
-    }
-
-    @PostMapping("/create")
-    public String create(User user) {
-        userServise.saveUser(user);
-        return "redirect:/admin";
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-        userServise.removeUserById(id);
-        return "redirect:/admin";
-    }
-
-    @GetMapping("/update/{id}")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        User user = userServise.getUserById(id);
-        List<Role> listRoles = userServise.listRoles();
-        model.addAttribute("user", user);
-        model.addAttribute("listRoles", listRoles);
-        return "update";
-    }
-
-    @PostMapping("/update")
-    public String editUsers(User user) {
-        userServise.updateUser(user);
-        return "redirect:/admin";
-    }
+//
+//    @GetMapping("/create")
+//    public String newUserForm(Model model, @ModelAttribute("user") User user) {
+//        List<Role> listRoles = userServise.listRoles();
+//        model.addAttribute("listRoles", listRoles);
+//        return "create";
+//    }
+//
+//    @PostMapping("/create")
+//    public String create(User user) {
+//        userServise.saveUser(user);
+//        return "redirect:/admin";
+//    }
+//
+//    @DeleteMapping("/delete/{id}")
+//    public String deleteUser(@PathVariable("id") Long id) {
+//        userServise.removeUserById(id);
+//        return "redirect:/admin";
+//    }
+//
+//    @GetMapping("/update/{id}")
+//    public String edit(@PathVariable("id") Long id, Model model) {
+//        User user = userServise.getUserById(id);
+//        List<Role> listRoles = userServise.listRoles();
+//        model.addAttribute("user", user);
+//        model.addAttribute("listRoles", listRoles);
+//        return "update";
+//    }
+//
+//    @PostMapping("/update")
+//    public String editUsers(User user) {
+//        userServise.updateUser(user);
+//        return "redirect:/admin";
+//    }
 }

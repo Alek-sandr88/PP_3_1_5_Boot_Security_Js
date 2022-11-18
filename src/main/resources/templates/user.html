@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -48,21 +48,19 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">Id</th>
-                                    <th scope="col">User Name</th>
-                                    <th scope="col">LastName</th>
-                                    <th scope="col">Password</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Last Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Role</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <td th:text="${user.id}">id</td>
-                                <td th:text="${user.username}">User name</td>
+                                <td th:text="${user.username}">username</td>
                                 <td th:text="${user.lastName}">lastName</td>
-                                <td th:text="${user.password}">password</td>
                                 <td th:text="${user.email}">email</td>
                                 <td>
-                                    <span th:each="role : ${user.roles}"
-                                          th:text="${role.toString() + ' '}"> role </span>
+                                    <span th:each="role : ${user.roles}" th:text="${role.toString() + ' '}"> role </span>
                                 </td>
                                 </tbody>
                             </table>
@@ -75,6 +73,10 @@
         </div>
     </div>
 </div>
+</div>
+</div>
+</div>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -84,29 +86,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<!--<div th:align="center">-->
-<!--    <table th:border="1">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>Id</th>-->
-<!--            <th>UserName</th>-->
-<!--            <th>LastName</th>-->
-<!--            <th>Password</th>-->
-<!--            <th>Email</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="user : ${user}">-->
-<!--            <td th:text="${user.id}">id</td>-->
-<!--            <td th:text="${user.username}">User name</td>-->
-<!--            <td th:text="${user.lastName}">lastName</td>-->
-<!--            <td th:text="${user.password}">password</td>-->
-<!--            <td th:text="${user.email}">email</td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <a th:href="@{/logout}">Logout</a></div>-->
 </body>
 </html>
