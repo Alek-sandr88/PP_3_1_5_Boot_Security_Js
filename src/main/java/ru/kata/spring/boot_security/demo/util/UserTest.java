@@ -23,8 +23,8 @@ public class UserTest implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        Role roleAdmin = new Role("ROLE_ADMIN");
-        Role roleUser = new Role("ROLE_USER");
+        Role roleAdmin = new Role( "ROLE_ADMIN");
+        Role roleUser = new Role( "ROLE_USER");
 
         Set<Role> rolAdmin = new HashSet<>();
         Set<Role> rolUser = new HashSet<>();
