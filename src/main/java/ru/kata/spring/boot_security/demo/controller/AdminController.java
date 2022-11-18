@@ -1,6 +1,7 @@
 package ru.kata.spring.boot_security.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +22,13 @@ public class AdminController {
     }
 
     @GetMapping()
-    public String allUsers(Model model) {
+    public String allUsers(Model model, @AuthenticationPrincipal User user) {
         List<User> users = userServise.getAllUsers();
+        List<Role> listRoles = userServise.listRoles();
         model.addAttribute("users", users);
-        model.addAttribute("user.roles", users);
+        model.addAttribute("userObj", new User());
+        model.addAttribute("listRoles", listRoles);
+        model.addAttribute("userRep", userServise.findByUsername(user.getUsername()));
         return "admin";
     }
 
@@ -47,7 +51,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userServise.removeUserById(id);
         return "redirect:/admin";
