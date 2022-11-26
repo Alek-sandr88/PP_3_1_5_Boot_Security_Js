@@ -15,8 +15,5 @@ public interface UserDao {
     void removeUserById(Long id);
     void updateUser(User updatedUser);
 
-
-    public List<Role> listRoles();
-
     User findByUsername(String username);
 }

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.servise.RoleServis;
 import ru.kata.spring.boot_security.demo.servise.UserServise;
 
 import java.util.List;
@@ -15,6 +16,12 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
     private UserServise userServise;
+    private RoleServis roleServis;
+
+    @Autowired
+    public void setRoleServis(RoleServis roleServis) {
+        this.roleServis = roleServis;
+    }
 
     @Autowired
     public void setUserServise(UserServise userServise) {
@@ -24,7 +31,7 @@ public class AdminController {
     @GetMapping()
     public String allUsers(Model model, @AuthenticationPrincipal User user) {
         List<User> users = userServise.getAllUsers();
-        List<Role> listRoles = userServise.listRoles();
+        List<Role> listRoles = roleServis.getAllRoles();
         model.addAttribute("users", users);
         model.addAttribute("userObj", new User());
         model.addAttribute("listRoles", listRoles);
@@ -37,38 +44,4 @@ public class AdminController {
         model.addAttribute("user", userServise.getUserById(id));
         return "admin";
     }
-//
-//    @GetMapping("/create")
-//    public String newUserForm(Model model, @ModelAttribute("user") User user) {
-//        List<Role> listRoles = userServise.listRoles();
-//        model.addAttribute("listRoles", listRoles);
-//        return "create";
-//    }
-//
-//    @PostMapping("/create")
-//    public String create(User user) {
-//        userServise.saveUser(user);
-//        return "redirect:/admin";
-//    }
-//
-//    @DeleteMapping("/delete/{id}")
-//    public String deleteUser(@PathVariable("id") Long id) {
-//        userServise.removeUserById(id);
-//        return "redirect:/admin";
-//    }
-//
-//    @GetMapping("/update/{id}")
-//    public String edit(@PathVariable("id") Long id, Model model) {
-//        User user = userServise.getUserById(id);
-//        List<Role> listRoles = userServise.listRoles();
-//        model.addAttribute("user", user);
-//        model.addAttribute("listRoles", listRoles);
-//        return "update";
-//    }
-//
-//    @PostMapping("/update")
-//    public String editUsers(User user) {
-//        userServise.updateUser(user);
-//        return "redirect:/admin";
-//    }
 }
