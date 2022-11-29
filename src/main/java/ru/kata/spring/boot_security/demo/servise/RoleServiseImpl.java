@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class RoleServisImpl implements RoleServis {
+public class RoleServiseImpl implements RoleServise {
     private final RoleDao roleDAO;
 
-    public RoleServisImpl(RoleDao roleDAO) {
+    public RoleServiseImpl(RoleDao roleDAO) {
         this.roleDAO = roleDAO;
     }
 

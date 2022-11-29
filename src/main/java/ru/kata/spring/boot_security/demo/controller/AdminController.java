@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.servise.RoleServis;
+import ru.kata.spring.boot_security.demo.servise.RoleServise;
 import ru.kata.spring.boot_security.demo.servise.UserServise;
 
 import java.util.List;
@@ -16,11 +16,11 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
     private UserServise userServise;
-    private RoleServis roleServis;
+    private RoleServise roleServise;
 
     @Autowired
-    public void setRoleServis(RoleServis roleServis) {
-        this.roleServis = roleServis;
+    public void setRoleServis(RoleServise roleServise) {
+        this.roleServise = roleServise;
     }
 
     @Autowired
@@ -31,7 +31,7 @@ public class AdminController {
     @GetMapping()
     public String allUsers(Model model, @AuthenticationPrincipal User user) {
         List<User> users = userServise.getAllUsers();
-        List<Role> listRoles = roleServis.getAllRoles();
+        List<Role> listRoles = roleServise.getAllRoles();
         model.addAttribute("users", users);
         model.addAttribute("userObj", new User());
         model.addAttribute("listRoles", listRoles);

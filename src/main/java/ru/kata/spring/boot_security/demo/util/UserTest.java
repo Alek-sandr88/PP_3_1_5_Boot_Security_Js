@@ -6,7 +6,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.servise.RoleServis;
+import ru.kata.spring.boot_security.demo.servise.RoleServise;
 import ru.kata.spring.boot_security.demo.servise.UserServise;
 
 import java.util.HashSet;
@@ -16,11 +16,11 @@ import java.util.Set;
 public class UserTest implements ApplicationRunner {
 
     private UserServise userServise;
-    private RoleServis roleServis;
+    private RoleServise roleServise;
 
     @Autowired
-    public void setRoleServis(RoleServis roleServis) {
-        this.roleServis = roleServis;
+    public void setRoleServis(RoleServise roleServise) {
+        this.roleServise = roleServise;
     }
 
     @Autowired
@@ -45,8 +45,8 @@ public class UserTest implements ApplicationRunner {
         User userRolUser = new User("user", "user",
                 "user", "user", rolUser);
 
-        roleServis.addRole(roleAdmin);
-        roleServis.addRole(roleUser);
+        roleServise.addRole(roleAdmin);
+        roleServise.addRole(roleUser);
         userServise.saveUser(UserRolAdmin);
         userServise.saveUser(userRolUser);
 

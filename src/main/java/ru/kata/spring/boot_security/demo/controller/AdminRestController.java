@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.exception.ExceptionInfo;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.servise.RoleServis;
+import ru.kata.spring.boot_security.demo.servise.RoleServise;
 import ru.kata.spring.boot_security.demo.servise.UserServise;
 
 import java.util.List;
@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 public class AdminRestController {
 
     private UserServise userServise;
-    private RoleServis roleServis;
+    private RoleServise roleServise;
 
     @Autowired
-    public void setRoleServis(RoleServis roleServis) {
-        this.roleServis = roleServis;
+    public void setRoleServis(RoleServise roleServise) {
+        this.roleServise = roleServise;
     }
 
     @Autowired
@@ -60,8 +60,7 @@ public class AdminRestController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ExceptionInfo> pageEdit(@PathVariable("id") long id,
-                                                  @RequestBody User user,
+    public ResponseEntity<ExceptionInfo> pageEdit(@RequestBody User user,
                                                   BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String error = getErrorsFromBindingResult(bindingResult);
